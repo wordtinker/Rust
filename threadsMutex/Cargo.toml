@@ -1,0 +1,7 @@
+[package]
+name = "threadsMutex"
+version = "0.1.0"
+authors = ["wordtinker"]
+edition = "2018"
+
+[dependencies]
