@@ -29,6 +29,8 @@ fn main() {
     if let Some(3) = some_u8_value {
         println!("three");
     }
+    // additioanl guards can be used
+    match_with_guard();
 }
 
 fn plus_one(x: Option<i32>) -> Option<i32> {
@@ -36,5 +38,16 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
         // every arm must be listed
         None => None,
         Some(i) => Some(i + 1)
+    }
+}
+
+fn match_with_guard() {
+    let pair = (-1, 1);
+    match pair {
+        (x, y) if x == y => println!("These are twins"),
+        // The ^ `if condition` part is a guard
+        (x, y) if x + y == 0 => println!("Antimatter, kaboom!"),
+        (x, _) if x % 2 == 1 => println!("The first one is odd"),
+        _ => println!("No correlation..."),
     }
 }
