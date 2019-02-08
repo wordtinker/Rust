@@ -4,7 +4,7 @@ use std::fs::File;
 use std::error::Error; // see crate::failure
 
 // main can return Result
-fn main() -> Result<(), Box<dyn Error>> { // see trair object
+fn main() -> Result<(), Box<dyn Error>> { // see trait object
     catch_and_panic();
     do_panic();
     Ok(())
