@@ -51,6 +51,7 @@ fn main() {
     println!("New article available! {}", article.summarize());
 }
 // traits could be returned
+// this works cause we return only one type (Tweet) see. trait objects
 fn returns_summarizable() -> impl Summary {
     Tweet {
         username: String::from("horse_ebooks"),
@@ -59,16 +60,20 @@ fn returns_summarizable() -> impl Summary {
         retweet: false,
     }
 }
+// any item that implements Summary
 fn notify(item: impl Summary) {
     println!("Breaking news! {}", item.summarize());
 }
-// more verbose version
+// any type that imple Summary
 fn notify2<T: Summary>(item: T) {
     println!("Breaking news! {}", item.summarize());
 }
-// even more verbose
-// several traits could be used with +
-fn notify3<T>(item: T)
+// any item1 that implements Summary, any item1 that implements Summary
+pub fn notify3(item1: impl Summary, item2: impl Summary) {}
+// T is any type that implements Summary, item1 and item2 share that type
+pub fn notify4<T: Summary>(item1: T, item2: T) { }
+// more verbose
+fn notify5<T>(item: T)
     where T: Summary
 {
     println!("Breaking news! {}", item.summarize());
@@ -88,6 +93,7 @@ impl<T> Pair<T> {
     }
 }
 // will be available only for Pair with those traits
+// several traits could be used with +
 impl<T: Display + PartialOrd> Pair<T> {
     fn cmp_display(&self) {
         if self.x >= self.y {
