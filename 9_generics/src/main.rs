@@ -1,4 +1,8 @@
 fn main() {
+    // At compile time Rust performs monomorphization: turns generic code into specific code
+    // by filling in the concrete types that are used when compiled.
+    // Generics are as fast as monomorphized functions would be. 
+
     let number_list = vec![34, 50, 25, 100, 65];
 
     let result = largest(&number_list);
@@ -27,6 +31,14 @@ struct Point<T> {
     x: T,
     y: T,
 }
+
+// in method defenitions
+impl<T> Point<T> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+}
+
 // Generics in enums
 enum Option<T> {
     Some(T),
