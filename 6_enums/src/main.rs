@@ -5,7 +5,17 @@ enum IpAddrKind {
     V6(String)
 }
 
+// implicit starts at 0
+enum Number {
+    Zero, // 0
+    One, // 1
+    TwoTwo = 22 // Explicit
+}
+
 fn main() {
+    println!("Zero is {}", Number::Zero as usize);
+    println!("TwoTwo is {}", Number::TwoTwo as usize);
+
     let home = IpAddrKind::V4(127, 0, 0, 1);
     let loopback = IpAddrKind::V6(String::from("::1"));
 
