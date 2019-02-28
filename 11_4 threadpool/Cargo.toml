@@ -1,0 +1,11 @@
+[package]
+name = "threading"
+version = "0.1.0"
+authors = ["wordtinker <wordtinker@yandex.ru>"]
+edition = "2018"
+
+[dependencies]
+failure = "0.1.5"
+exitfailure ="0.5.1"
+ctrlc = "3.1.1"
+threadpool = "1.7.1"
